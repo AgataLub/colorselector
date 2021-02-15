@@ -72,14 +72,10 @@ function findRGB(valueRGB) {
   findHSL(r, g, b);
 }
 
-function findHSL(h, s, l) {
+function findHSL(r, g, b) {
   console.log("findHSL");
 
-  r /= 255;
-  g /= 255;
-  b /= 255;
-
-  //   let h, s, l;
+  let h, s, l;
 
   const min = Math.min(r, g, b);
   const max = Math.max(r, g, b);
