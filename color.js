@@ -61,9 +61,9 @@ function findRGB(valueRGB) {
   }
   console.log(newArray);
 
-  let r1 = 16 * newArray[0] + newArray[1];
-  let g1 = 16 * newArray[2] + newArray[3];
-  let b1 = 16 * newArray[4] + newArray[5];
+  let r = 16 * newArray[0] + newArray[1];
+  let g = 16 * newArray[2] + newArray[3];
+  let b = 16 * newArray[4] + newArray[5];
 
   valueRGB = "(" + r + ", " + g + ", " + b + ")";
 
