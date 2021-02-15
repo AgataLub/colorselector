@@ -75,6 +75,10 @@ function findRGB(valueRGB) {
 function findHSL(r, g, b) {
   console.log("findHSL");
 
+  r /= 255;
+  g /= 255;
+  b /= 255;
+
   let h, s, l;
 
   const min = Math.min(r, g, b);
