@@ -1,6 +1,6 @@
 "use strict";
 
-document.querySelector(".selector").addEventListener("change", findHEX);
+document.querySelector(".selector").addEventListener("input", findHEX);
 
 let hex;
 

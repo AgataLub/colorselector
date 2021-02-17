@@ -1,0 +1,9 @@
+div {
+  margin: 3em;
+}
+
+.colorbox {
+  border: 1px dashed black;
+  height: 45px;
+  width: 100px;
+}
