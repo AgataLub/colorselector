@@ -62,11 +62,11 @@ function getHarmony() {
       break;
     case "complement":
       console.log("complement");
-      harmony = harmony.map(calcComplement);
+      harmony = calcComplement(hsl);
       break;
     case "compound":
       console.log("compound");
-      harmony = harmony.map(calcCompound);
+      harmony = calcCompound(hsl);
       break;
     case "shades":
       console.log("shades");
@@ -388,9 +388,84 @@ function calcTriad(objecthsl) {
   return triadArray;
 }
 
-function calcComplement(objecthsl) {}
-function calcCompound(objecthsl) {}
-function calcShades(objecthsl) {}
+function calcComplement(objecthsl) {
+  let h = objecthsl.h;
+  let s = objecthsl.s;
+  let l = objecthsl.l;
+
+  let comp1, comp2, comp3, comp4, a;
+
+  let complementArray = [];
+
+  if (h > 180) {
+    a = h - 180;
+  } else {
+    a = h + 180;
+  }
+
+  comp1 = {
+    h: a,
+    s: s,
+    l: l,
+  };
+
+  comp2 = calcMono(comp1);
+  comp3 = calcMono(comp2);
+  comp4 = calcMono(objecthsl);
+
+  complementArray.push(comp1);
+  complementArray.push(comp2);
+  complementArray.push(comp3);
+  complementArray.push(comp4);
+
+  console.log(complementArray);
+
+  return complementArray;
+}
+
+function calcCompound(objecthsl) {
+  let h = objecthsl.h;
+  let s = objecthsl.s;
+  let l = objecthsl.l;
+
+  let comp1, comp2, comp3, comp4, a;
+
+  let compArray = [];
+
+  if (h > 180) {
+    a = h - 180;
+  } else {
+    a = h + 180;
+  }
+
+  comp1 = {
+    h: a,
+    s: s,
+    l: l,
+  };
+
+  comp2 = calcAnalogous(comp1);
+  comp3 = calcAnalogous(objecthsl);
+  comp4 = calcAnalogous(objecthsl);
+
+  compArray.push(comp1);
+  compArray.push(comp2);
+  compArray.push(comp3);
+  compArray.push(comp4);
+
+  console.log(compArray);
+
+  return compArray;
+}
+function calcShades(objecthsl) {
+  let h = objecthsl.h;
+  let s = objecthsl.s;
+  let l = objecthsl.l;
+
+  l = Math.floor(Math.random() * 101);
+
+  return { h, s, l };
+}
 
 //showing text fields
 function showDivChoose() {
