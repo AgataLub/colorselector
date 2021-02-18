@@ -1,0 +1,81 @@
+body {
+  background-color: #211e1e;
+  font-family: Helvetica, sans-serif;
+  color: #aba2a2;
+  overflow: hidden;
+  /* display: flex;
+  flex-direction: column;
+  align-items: center; */
+}
+
+/* color picker */
+.select {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30vh;
+}
+
+/* displaying color palettes */
+.palette {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  min-height: 40vh;
+  position: absolute;
+  width: 100%;
+  left: 0px;
+  bottom: 0px;
+}
+
+.output {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 2em;
+}
+
+/* Choosing harmonies (top menu) */
+.harmonies {
+  position: absolute;
+  width: 100%;
+  left: 0px;
+  top: 0px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  min-height: 10vh;
+}
+
+button {
+  background-color: #343434;
+  border: none;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2em;
+  flex-grow: 1;
+  color: #aba2a2;
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+button:hover {
+  background-color: #5c5959;
+}
+
+button:active {
+  background-color: #705050;
+}
+
+/* other styles */
+
+.hidden {
+  display: none;
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Color Palette Designer</title>
+    <link rel="stylesheet" href="palette.css" />
+  </head>
+  <body>
+    <div class="harmonies">
+      <button id="analogous">Analogous</button>
+      <button id="mono">Monochromatic</button>
+      <button id="triad">Triad</button>
+      <button id="complement">Complementary</button>
+      <button id="compound">Compound</button>
+      <button id="shades">Shades</button>
+    </div>
+
+    <div class="select">
+      <h1>1. Choose Color</h1>
+      <input type="color" id="picker" class="selector" />
+      <h1 class="choose hidden">2. Choose Harmony</h1>
+      <h1 class="repeat hidden">3. Repeat :)</h1>
+    </div>
+
+    <div class="palette">
+      <div class="output" id="one">
+        HEX: <span class="hex"></span><br />
+        RGB: <span class="rgb"></span><br />
+        HSL: <span class="hsl"></span>
+      </div>
+      <div class="output" id="two">
+        HEX: <span class="hex"></span><br />
+        RGB: <span class="rgb"></span><br />
+        HSL: <span class="hsl"></span>
+      </div>
+      <div class="output" id="main">
+        HEX: <span class="hex"></span><br />
+        RGB: <span class="rgb"></span><br />
+        HSL: <span class="hsl"></span>
+      </div>
+      <div class="output" id="four">
+        HEX: <span class="hex"></span><br />
+        RGB: <span class="rgb"></span><br />
+        HSL: <span class="hsl"></span>
+      </div>
+      <div class="output" id="five">
+        HEX: <span class="hex"></span><br />
+        RGB: <span class="rgb"></span><br />
+        HSL: <span class="hsl"></span>
+      </div>
+    </div>
+
+    <script src="palette.js"></script>
+  </body>
+</html>
