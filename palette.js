@@ -6,12 +6,12 @@ window.addEventListener("load", init);
 function init() {
   console.log("init");
   document.querySelector(".selector").addEventListener("input", operateHex);
-  document.querySelector("#analogous").addEventListener("click", getHarmony);
-  document.querySelector("#mono").addEventListener("click", getHarmony);
-  document.querySelector("#triad").addEventListener("click", getHarmony);
-  document.querySelector("#complement").addEventListener("click", getHarmony);
-  document.querySelector("#compound").addEventListener("click", getHarmony);
-  document.querySelector("#shades").addEventListener("click", getHarmony);
+  document.querySelector("#analogous").addEventListener("click", operateHarmony);
+  document.querySelector("#mono").addEventListener("click", operateHarmony);
+  document.querySelector("#triad").addEventListener("click", operateHarmony);
+  document.querySelector("#complement").addEventListener("click", operateHarmony);
+  document.querySelector("#compound").addEventListener("click", operateHarmony);
+  document.querySelector("#shades").addEventListener("click", operateHarmony);
 
   document.querySelector(".selector").addEventListener("change", showDivChoose);
 }
@@ -37,7 +37,7 @@ function getColor() {
   return hex.slice(1);
 }
 
-function getHarmony() {
+function operateHarmony() {
   let id = this.id;
   let hsl = operateHex().hsl;
   let harmony = [hsl, hsl, hsl, hsl];
@@ -72,9 +72,12 @@ function getHarmony() {
       console.log("shades");
       harmony = harmony.map(calcShades);
   }
+
   harmony = harmony.map(hslToRgb);
+
+  displayHarmoniesCode(harmony);
+
   harmony = harmony.map(rgbToCss);
-  console.log(harmony);
   displayBgHarmonies(harmony);
   showDivRepeat();
 }
@@ -87,9 +90,41 @@ function changeBackground(id, color) {
 
 function displayCode(id, hex, rgb, hsl) {
   console.log("displayCode");
+
   document.querySelector(`#${id} .hex`).textContent = "#" + hex;
   document.querySelector(`#${id} .rgb`).textContent = `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`;
   document.querySelector(`#${id} .hsl`).textContent = `hsl(${hsl.h}°, ${hsl.s}%, ${hsl.l}%)`;
+}
+
+function displayHarmoniesCode(harmony) {
+  console.log(harmony);
+
+  //display rgb
+
+  let rgbharmony = harmony.map(rgbToCss);
+
+  document.querySelector(`#one .rgb`).textContent = rgbharmony[0];
+  document.querySelector(`#two .rgb`).textContent = rgbharmony[1];
+  document.querySelector(`#four .rgb`).textContent = rgbharmony[2];
+  document.querySelector(`#five .rgb`).textContent = rgbharmony[3];
+
+  //display hsl
+
+  let hslharmony = harmony.map(rgbToHsl);
+
+  document.querySelector(`#one .hsl`).textContent = `hsl(${hslharmony[0].h}°, ${hslharmony[0].s}%, ${hslharmony[0].l}%)`;
+  document.querySelector(`#two .hsl`).textContent = `hsl(${hslharmony[1].h}°, ${hslharmony[1].s}%, ${hslharmony[1].l}%)`;
+  document.querySelector(`#four .hsl`).textContent = `hsl(${hslharmony[2].h}°, ${hslharmony[2].s}%, ${hslharmony[2].l}%)`;
+  document.querySelector(`#five .hsl`).textContent = `hsl(${hslharmony[3].h}°, ${hslharmony[3].s}%, ${hslharmony[3].l}%)`;
+
+  //display hex
+
+  let hexharmony = harmony.map(rgbToHex);
+  console.log(hexharmony);
+  document.querySelector(`#one .hex`).textContent = hexharmony[0];
+  document.querySelector(`#two .hex`).textContent = hexharmony[1];
+  document.querySelector(`#four .hex`).textContent = hexharmony[2];
+  document.querySelector(`#five .hex`).textContent = hexharmony[3];
 }
 
 function displayBgHarmonies(objectHarmony) {
@@ -184,12 +219,12 @@ function rgbToHex(objectrgb) {
   let g = objectrgb.g;
   let b = objectrgb.b;
 
-  let digit1 = hexaDecimal(Math.floor(r / 16));
-  let digit2 = hexaDecimal((r / 16 - Math.floor(r / 16)) * 16);
-  let digit3 = hexaDecimal(Math.floor(g / 16));
-  let digit4 = hexaDecimal((g / 16 - Math.floor(g / 16)) * 16);
-  let digit5 = hexaDecimal(Math.floor(b / 16));
-  let digit6 = hexaDecimal((b / 16 - Math.floor(b / 16)) * 16);
+  let digit1 = hexaToDecimal(Math.floor(r / 16));
+  let digit2 = hexaToDecimal((r / 16 - Math.floor(r / 16)) * 16);
+  let digit3 = hexaToDecimal(Math.floor(g / 16));
+  let digit4 = hexaToDecimal((g / 16 - Math.floor(g / 16)) * 16);
+  let digit5 = hexaToDecimal(Math.floor(b / 16));
+  let digit6 = hexaToDecimal((b / 16 - Math.floor(b / 16)) * 16);
 
   return "#" + digit1 + digit2 + digit3 + digit4 + digit5 + digit6;
 }
